@@ -17,10 +17,11 @@ $clientIP = inet_ntop($addr_bin);
 ?>
 /**
 *
-* IsTOR
+* tor.js
+* Minimal JavaScript library to check if your visitors are TOR users
 *
-* Usage
-* <script src=""></script>
+* Usage: https://simon-frey.eu/torjs/
+* License: Public Domain (https://github.com/simonfrey/tor.js/blob/master/LICENSE)
 **/
 
 <?php
@@ -43,5 +44,8 @@ function executeForNotTOR(f) {
 }
 
 function redirectTOR(url){
-    executeForTOR(window.location.replace(url));
+    var current = new URL(window.location);
+    var redirect = new URL(url);
+    current.hostname = redirect.hostname;
+    executeForTOR(window.location.replace(current));
 }

@@ -1,54 +1,120 @@
 <html>
 
 <head>
-<title>tor.js - Minimal JavaScript library for checking if your visitors are TOR users</title>
-<style>
-    html{
-        background-color: #272822;
-        color:#f8f8f2;
-        font-family: 'Lucida Console',Monaco,monospace;
-    }
-    body{
-        width: 90%;
-        max-width: 600px;
-        margin: auto;
-        
-    }
-#torHINT{
-    color:white;
-    background-color: purple;
-    text-align: center;
-    line-height: 1.4em;
-    font-size: 1.4em;
-    font-weight: bold;
-}
-h1,h2,h3{
-    text-align: center;
-}
-h2,h3{
-    text-decoration: underline;
-}
-</style>
+    <title>tor.js - Minimal JavaScript library to check if your visitors are TOR users</title>
+    <style>
+        html {
+            background-color: #272822;
+            color: #f8f8f2;
+            font-family: 'Lucida Console', Monaco, monospace;
+            padding:1em;
+        }
+        a {
+            color:#f8f8f2;
+        }
+
+        body {
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+
+        }
+
+        #torHINT {
+            background-color: purple;
+            text-align: center;
+            line-height: 1.4em;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        h1,
+        h2,
+        h3,h4 {
+            padding:0.2em;
+        }
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+        }
+
+
+        h2{
+           background-color:#f8f8f2;
+           color:#272822;
+        }
+        h3 {
+            border:2px solid #f8f8f2;
+        }
+
+        h4 {
+            border:1px dotted #f8f8f2;
+        }
+
+        pre{
+            background-color:rgba(0,0,0,0.1);
+            padding:1em;
+        }
+    </style>
 </head>
 
 <body>
     <h1>tor.js</h1>
-    <p>Minimal JavaScript library for checking if your visitors are TOR users</p>
+    <p>Minimal JavaScript library to check if your visitors are TOR users</p>
     <p id="torHINT">You are NOT using TOR</p>
-    <h3>Motivation</h3>
-<p>I wanted </p>
-    <h3>Usage</h3>
-    <hr>
-    <p>This project is Public Domain and can be found on Github</p>
+    <p>Visiting the NYTimes via the TOR browser it anoyed me, that they are not automatically redirecting me to their .onion service.</p>
+    <p>With this small library anyone could easily do that or provide other special functionalities for TOR users.</p>
+    <p>My server script generates the isTor global variable by checking the requesting IP against the <a href="https://check.torproject.org/exit-addresses" target="_blank">TOR exit nodes list</a></p>
+    <p>If you don't know that yet. The <a href="https://www.torproject.org/" target="_blank">TOR browser</a> is a privacy protecting web browser defending you against tracking and surveillance and helps to circumvent censorship.</p>
+    <h2>Usage</h2>
+    <h3>Including the script</h3>
+    <pre><span style='color:#d2cd86; '>&lt;</span>script src<span style='color:#d2cd86; '>=</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>https://simon-frey.eu/torjs/tor.js</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>></span><span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>script<span style='color:#d2cd86; '>></span></pre>
+    <!--Created using ToHtml.com on 2019-11-11 23:22:47 UTC -->
+    <h3>Available functions</h3>
+    <h4>isTor</h4>
+    There is a global boolean variable declared by the script telling you if the user is a TOR user
+<pre><span style='color:#d2cd86; '>&lt;</span>script<span style='color:#d2cd86; '>></span>
+    <span style='color:#e66170; font-weight:bold; '>if</span><span style='color:#d2cd86; '>(</span>isTor<span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>{</span>
+        <span style='color:#e66170; font-weight:bold; '>alert</span><span style='color:#d2cd86; '>(</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Hello World TOR user</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#e66170; font-weight:bold; '>else</span><span style='color:#b060b0; '>{</span>
+        <span style='color:#e66170; font-weight:bold; '>alert</span><span style='color:#d2cd86; '>(</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Hello World normal user</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#b060b0; '>}</span>
+<span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>script<span style='color:#d2cd86; '>></span></pre>
+    <h4>redirectTOR(url)</h4>
+    The redirectTOR function redirects the vistor to the same page on the given (.onion) host if the visitor is a TOR user. 
+    With this function you may redirect the visitor to you .onion service on visit.
+<pre><span style='color:#d2cd86; '>&lt;</span>script<span style='color:#d2cd86; '>></span>
+    redirectTOR<span style='color:#d2cd86; '>(</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>snaajk2n2n2n2nakjnasdf.onion</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>script<span style='color:#d2cd86; '>></span></pre>
 
-    <script src="https://simon-frey.eu/torjs/tor.js"></script>
-    <script>
-        executeForTOR(function () {
-            var hint = document.getElementById("torHINT");
-            hint.style.backgroundColor = "olivedrab";
-            hint.innerHTML = "You are using TOR";            
-        });
-    </script>
+    <h4>executeForTOR(function)</h4>
+    As helper I added the executeForTOR function that takes a function as parameter. The given function will only be
+    exectuted if the visitor is a TOR user.
+<pre><span style='color:#d2cd86; '>&lt;</span>script<span style='color:#d2cd86; '>></span>
+    executeForTOR<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>function</span> <span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span>
+        <span style='color:#e66170; font-weight:bold; '>alert</span><span style='color:#d2cd86; '>(</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Hello World TOR user</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>           
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>script<span style='color:#d2cd86; '>></span></pre>
+
+    <h4>executeForNotTOR(function)</h4>
+    Same as the executeForTOR, the executeForNotTOR funtion takes a function as parameter. The given function will only
+    be exectuted if the visitor is NOT a TOR user.
+<pre><span style='color:#d2cd86; '>&lt;</span>script<span style='color:#d2cd86; '>></span>
+    executeForTOR<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>function</span> <span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span>
+        <span style='color:#e66170; font-weight:bold; '>alert</span><span style='color:#d2cd86; '>(</span><span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Hello World normal user</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<span style='color:#d2cd86; '>&lt;</span><span style='color:#d2cd86; '>/</span>script<span style='color:#d2cd86; '>></span></pre>
+    <hr>
+    <p>This project is Public Domain and can be found on <a href="https://github.com/simonfrey/tor.js">Github</a>
+
+        <script src="https://simon-frey.eu/torjs/tor.js"></script>
+        <script>
+            executeForTOR(function () {
+                var hint = document.getElementById("torHINT");
+                hint.style.backgroundColor = "olivedrab";
+                hint.innerHTML = "You are using TOR";
+            });
+        </script>
 </body>
 
 </html>
