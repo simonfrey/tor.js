@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^tor.js$  /torjs/tor_js.php [L]
