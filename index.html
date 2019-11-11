@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<title>tor.js - Minimal JavaScript library for checking if your visitors are TOR users</title>
+<style>
+    html{
+        background-color: #272822;
+        color:#f8f8f2;
+        font-family: 'Lucida Console',Monaco,monospace;
+    }
+    body{
+        width: 90%;
+        max-width: 600px;
+        margin: auto;
+        
+    }
+#torHINT{
+    color:white;
+    background-color: purple;
+    text-align: center;
+    line-height: 1.4em;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+h1,h2,h3{
+    text-align: center;
+}
+h2,h3{
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+    <h1>tor.js</h1>
+    <p>Minimal JavaScript library for checking if your visitors are TOR users</p>
+    <p id="torHINT">You are NOT using TOR</p>
+    <h3>Motivation</h3>
+<p>I wanted </p>
+    <h3>Usage</h3>
+    <hr>
+    <p>This project is Public Domain and can be found on Github</p>
+
+    <script src="https://simon-frey.eu/torjs/tor.js"></script>
+    <script>
+        executeForTOR(function () {
+            var hint = document.getElementById("torHINT");
+            hint.style.backgroundColor = "olivedrab";
+            hint.innerHTML = "You are using TOR";            
+        });
+    </script>
+</body>
+
+</html>
